@@ -69,7 +69,17 @@ public class Matriz {
     } 
 
 
-
+    
+    public static Matriz Traspuesta(Matriz m) throws DimensionesIncompatibles { 
+        Dimension dim = m.getDimension();
+        Matriz matrizTraspuesta = new Matriz(dim.width, dim.height, false);
+        for (int i = 0; i < dim.height; i++) {
+            for (int j = 0; j < dim.width; j++) {
+                matrizTraspuesta.datos[j][i] = m.datos[i][j];
+            }
+        }
+        return matrizTraspuesta;
+    } 
 
     @Override
     public String toString(){
