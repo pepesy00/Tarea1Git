@@ -48,6 +48,29 @@ public class Matriz {
         return matrizResultante; 
     } 
 
+    public static Matriz MultiplicacionDeMatrices(Matriz a, Matriz b) throws DimensionesIncompatibles { 
+        Dimension dimA = a.getDimension();
+        Dimension dimB = b.getDimension();
+    
+        if (dimA.width != dimB.height) {
+            throw new DimensionesIncompatibles("Las dimensiones de las matrices no son compatibles para la multiplicación");
+        }
+
+        Matriz matrizResultante = new Matriz(dimA.height, dimB.width, false);
+        for (int i = 0; i < dimA.height; i++) {
+            for (int j = 0; j < dimB.width; j++) {
+                for (int k = 0; k < dimA.width; k++) {
+                    matrizResultante.datos[j][i] += a.datos[k][i] * b.datos[j][k];
+                }
+            }
+        }
+
+        return matrizResultante;
+    } 
+
+
+
+
     @Override
     public String toString(){
         String ret = "";
